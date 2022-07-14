@@ -60,6 +60,89 @@
 
         }
 
+        window.onload = function() {
+            drawImage('nfl','ALERT', 'header text', 'bottom text');
+            
+        }
+        function generate() {
+            var formData = new FormData(document.querySelector('form'));
+            
+            var team = formData.get('team');
+            var alert_text = formData.get('alert-text');
+            var header_text = formData.get('header-text');
+            var bottom_text = formData.get('bottom-text');
+
+            drawImage(team, alert_text, header_text, bottom_text);
+        }
+      </script>
+</head>
+<body>
+    <form id="generate-form" action="">
+        <!-- <input type="file" class="upload-image"> -->
+        Alert Text: <input type="text" name="alert-text" id="alert-text">
+        Header Text: <input type="text" name="header-text" id="header-text">
+        Bottom Text: <input type="text" name="bottom-text" id="bottom-text">
+        <select name="team" id="team">
+            <option value="arizona-cardinals">Arizona Cardinals</option>
+            <option value="atlanta-falcons">Atlanta Falcons</option>
+            <option value="baltimore-ravens">Baltimore Ravens</option>
+            <option value="buffalo-bills">Buffalo Bills</option>
+            <option value="carolina-panthers">Carolina Panthers</option>
+            <option value="chicago-bears">Chicago Bears</option>
+            <option value="cincinnati-bengals">Cincinnati Bengals</option>
+            <option value="cleveland-browns">Cleveland Browns</option>
+            <option value="dallas-cowboys">Dallas Cowboys</option>
+            <option value="denver-broncos">Denver Broncos</option>
+            <option value="detroit-lions">Detroit Lions</option>
+            <option value="green-bay-packers">Green Bay Packers</option>
+            <option value="houston-texans">Houston Texans</option>
+            <option value="indianapolis-colts">Indianapolis Colts</option>
+            <option value="jacksonville-jaguars">Jacksonville Jaguars</option>
+            <option value="kansas-city-chiefs">Kansas City Chiefs</option>
+            <option value="las-vegas-raiders">Las Vegas Raiders</option>
+            <option value="los-angeles-chargers">Los Angeles Chargers</option>
+            <option value="los-angeles-rams">Los Angeles Rams</option>
+            <option value="miami-dolphins">Miami Dolphins</option>
+            <option value="minnesota-vikings">Minnesota Vikings</option>
+            <option value="new-england-patriots">New England Patriots</option>
+            <option value="new-orleans-saints">New Orleans Saints</option>
+            <option value="new-york-giants">New York Giants</option>
+            <option value="new-york-jets">New York Jets</option>
+            <option value="philadelphia-eagles">Philadelphia Eagles</option>
+            <option value="pittsburgh-steelers">Pittsburgh Steelers</option>
+            <option value="san-francisco-49ers">San Francisco 49ers</option>
+            <option value="seattle-seahawks">Seattle Seahawks</option>
+            <option value="tampa-bay-buccaneers">Tampa Bay Buccaneers</option>
+            <option value="tennessee-titans">Tennessee Titans</option>
+            <option value="washington-commanders">Washington Commanders</option>
+        </select>
+        <input type="button" value="Generate" onclick="generate()">
+    </form>
+    
+    <canvas id="news-generator" height="1200" width="1200">
+    </canvas>
+    <img src="baker.jpeg" id="player-img" alt="default image" style="display: none;">
+    <p id="img-url"></p>
+    <script>
+        function getLines(ctx, text, maxWidth) {
+            var words = text.split(" ");
+            var lines = [];
+            var currentLine = words[0];
+
+            for (var i = 1; i < words.length; i++) {
+                var word = words[i];
+                var width = ctx.measureText(currentLine + " " + word).width;
+                if (width < maxWidth) {
+                    currentLine += " " + word;
+                } else {
+                    lines.push(currentLine);
+                    currentLine = word;
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        }
+
         function teamData(team){
             var teams = {
                 'nfl': {
@@ -107,67 +190,128 @@
                     'header_color': 'rgb()',
                     'text_color': 'rgb()'
                 },
-            }
-            return teams[team];
-        }
-
-        window.onload = function() {
-            drawImage('nfl','ALERT', 'header text', 'bottom text');
-            
-        }
-        function generate() {
-            var formData = new FormData(document.querySelector('form'));
-            
-            var team = formData.get('team');
-            var alert_text = formData.get('alert-text');
-            var header_text = formData.get('header-text');
-            var bottom_text = formData.get('bottom-text');
-
-            drawImage(team, alert_text, header_text, bottom_text);
-        }
-      </script>
-</head>
-<body>
-    <form id="generate-form" action="">
-        <!-- <input type="file" class="upload-image"> -->
-        Alert Text: <input type="text" name="alert-text" id="alert-text">
-        Header Text: <input type="text" name="header-text" id="header-text">
-        Bottom Text: <input type="text" name="bottom-text" id="bottom-text">
-        <select name="team" id="team">
-            <option value="arizona-cardinals">Arizona Cardinals</option>
-            <option value="atlanta-falcons">Atlanta Falcons</option>
-            <option value="baltimore-ravens">Baltimore Ravens</option>
-            <option value="buffalo-bills">Buffalo Bills</option>
-            <option value="carolina-panthers">Carolina Panthers</option>
-            <option value="chicago-bears">Chicago Bears</option>
-            <option value="cincinnati-bengals">Cincinnati Bengals</option>
-            <option value="cleveland-browns">Cleveland Browns</option>
-        </select>
-        <input type="button" value="Generate" onclick="generate()">
-    </form>
-    
-    <canvas id="news-generator" height="1200" width="1200">
-    </canvas>
-    <img src="baker.jpeg" id="player-img" alt="default image" style="display: none;">
-    <p id="img-url"></p>
-    <script>
-        function getLines(ctx, text, maxWidth) {
-            var words = text.split(" ");
-            var lines = [];
-            var currentLine = words[0];
-
-            for (var i = 1; i < words.length; i++) {
-                var word = words[i];
-                var width = ctx.measureText(currentLine + " " + word).width;
-                if (width < maxWidth) {
-                    currentLine += " " + word;
-                } else {
-                    lines.push(currentLine);
-                    currentLine = word;
+                'dallas-cowboys': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'denver-broncos': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'detroit-lions': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'green-bay-packers': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'houston-texans': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'indianapolis-colts': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'jacksonville-jaguars': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'kansas-city-chiefs': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'las-vegas-raiders': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'los-angeles-chargers': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'los-angeles-rams': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'miami-dolphins': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'minnesota-vikings': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'new-england-patriots': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'new-orleans-saints': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'new-york-giants': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'new-york-jets': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'philadelphia-eagles': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'pittsburgh-steelers': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'san-francisco-49ers': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'seattle-seahawks': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'tampa-bay-buccaneers': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'tennessee-titans': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
+                },
+                'washington-commanders': {
+                    'bg_color': 'rgb()',
+                    'header_color': 'rgb()',
+                    'text_color': 'rgb()'
                 }
             }
-            lines.push(currentLine);
-            return lines;
+            return teams[team];
         }
     </script>
 </body>
