@@ -13,6 +13,7 @@ function drawImage(team, quote_text, attribution_text, player_img) {
         document.fonts.add(font);
         // Add player image to left side.
         const img = new Image();
+        img.crossOrigin = "Anonymous";
         img.addEventListener('load', function() {
             var ratio = canvas.height/img.naturalHeight;
             var h = canvas.height;
@@ -54,6 +55,7 @@ function drawImage(team, quote_text, attribution_text, player_img) {
 
             // Add team logo to the top right.
             const logo = new Image();
+            logo.crossOrigin = "Anonymous";
             logo.addEventListener('load', function() {
             if (team == 'nfl') {
                 ctx.drawImage(logo, 1130, 10, 55, 70);
@@ -71,8 +73,12 @@ function drawImage(team, quote_text, attribution_text, player_img) {
         else {
             img.src = player_img;
         }
+        const url = document.getElementById('img-url');
+        url.href = canvas.toDataURL();
     });
+    
 }
+
 
 window.onload = function() {
     drawImage(

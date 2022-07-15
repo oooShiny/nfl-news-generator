@@ -7,6 +7,7 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
 
     // Add player image to left side.
     const img = new Image();
+    img.crossOrigin = "Anonymous";
     img.addEventListener('load', function() {
         var ratio = canvas.height/img.naturalHeight;
         var h = canvas.height;
@@ -58,6 +59,7 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         ctx.shadowOffsetY = 25;
         ctx.shadowBlur = 10;
         const logo = new Image();   // Create new img element
+        logo.crossOrigin = "Anonymous";
         logo.addEventListener('load', function() {
             if (team == 'nfl') {
                 ctx.drawImage(logo, 600, -150, canvas.width/2.5, canvas.height/2);
@@ -74,14 +76,8 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
     else {
         img.src = player_img;
     }
-    
-
-    
-
-
-    // const url = document.getElementById('img-url');
-    // url.innerText = canvas.toDataURL();
-
+    const url = document.getElementById('img-url');
+    url.href = canvas.toDataURL();
 }
 
 window.onload = function() {
