@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'SF-Movie-Poster-Bold';
+    src:url('fonts/SF-Movie-Poster-Bold.ttf.woff') format('woff'),
+        url('fonts/SF-Movie-Poster-Bold.ttf.svg#SF-Movie-Poster-Bold') format('svg'),
+        url('fonts/SF-Movie-Poster-Bold.ttf.eot'),
+        url('fonts/SF-Movie-Poster-Bold.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}

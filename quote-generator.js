@@ -5,48 +5,68 @@ function drawImage(team, quote_text, attribution_text, player_img) {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Add player image to left side.
-    const img = new Image();
-    img.addEventListener('load', function() {
-        ctx.drawImage(img, 
-            0, 0, // Starting point of cropped image on canvas
-            1200, 1200 // Scaled width/height image
-            );
-        
-        // Overlay gradient.
-        var gradient = ctx.createLinearGradient(0, 0, 0, 1200);
-        gradient.addColorStop(0.25, 'rgb(255, 255, 255, 0)');
-        gradient.addColorStop(.75, t.bg_color);
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, 1200, 1200);
-        
-        // Draw quote box (white)
-        ctx.fillStyle = 'rgb(220, 220, 220)';
-        ctx.fillRect(50, 791, 1100, 355);
+    var myFont = new FontFace('My Font', 'url(fonts/SF-Movie-Poster-Bold.ttf.woff)');
 
-        // Add quote text.
-        ctx.fillStyle = 'rgb(0, 0, 0)';
-        ctx.textAlign = 'center';
-        quote_text = '"' + quote_text + '"';
-        ctx.font = '40px Verdana';
-        var quote = getLines(ctx, quote_text, 800);
-        
-        quote.forEach(function(line, i) {
-            ctx.fillText(line.toUpperCase(), 600, 875+(i*40),);
-        });
-        
-        // Add attribution text.
-        ctx.textAlign = 'right';
-        ctx.font = '25px Verdana';
-        ctx.fillText(attribution_text.toUpperCase(), 1100, 1125);
+    myFont.load().then(function(font){
 
-    }, false);
-    if (typeof player_img === 'object') {
-        img.src = URL.createObjectURL(player_img);
-    }
-    else {
-        img.src = player_img;
-    }
+        // with canvas, if this is ommited won't work
+        document.fonts.add(font);
+        // Add player image to left side.
+        const img = new Image();
+        img.addEventListener('load', function() {
+            ctx.drawImage(img, 
+                0, 0, // Starting point of cropped image on canvas
+                1200, 1200 // Scaled width/height image
+                );
+            
+            // Overlay gradient.
+            var dark_gradient = ctx.createLinearGradient(0, 0, 0, 1200);
+            dark_gradient.addColorStop(0.25, 'rgb(255, 255, 255, 0)');
+            dark_gradient.addColorStop(.75, t.bg_color);
+            ctx.fillStyle = dark_gradient;
+            ctx.fillRect(0, 0, 1200, 1200);
+            
+            
+            // Draw quote box (white)
+            ctx.fillStyle = t.text_color;
+            ctx.fillRect(50, 791, 1100, 355);
+
+            // Add quote text.
+            ctx.fillStyle = 'rgb(0, 0, 0)';
+            ctx.textAlign = 'center';
+            quote_text = '"' + quote_text + '"';
+            ctx.font = '60px SF-Movie-Poster-Bold';
+            var quote = getLines(ctx, quote_text, 1000);
+            
+            quote.forEach(function(line, i) {
+                ctx.fillText(line.toUpperCase(), 600, 875+(i*55),);
+            });
+            
+            // Add attribution text.
+            ctx.textAlign = 'right';
+            ctx.font = '25px SF-Movie-Poster-Bold';
+            ctx.fillText(attribution_text.toUpperCase(), 1100, 1125);
+
+            // Add team logo to the top right.
+            const logo = new Image();
+            logo.addEventListener('load', function() {
+            if (team == 'nfl') {
+                ctx.drawImage(logo, 1130, 10, 55, 70);
+            }
+            else {
+                ctx.drawImage(logo, 1120, 10, 70, 70);
+            }
+            }, false);
+            logo.src = 'logos/' + team + '.webp';
+
+        }, false);
+        if (typeof player_img === 'object') {
+            img.src = URL.createObjectURL(player_img);
+        }
+        else {
+            img.src = player_img;
+        }
+    });
 }
 
 window.onload = function() {
