@@ -82,7 +82,7 @@ window.onload = function() {
     
 }
 function generate() {
-    var formData = new FormData(document.querySelector('form'));
+    var formData = new FormData(document.querySelector('form#alert-form'));
     
     var team = formData.get('team');
     var alert_text = formData.get('alert-text');

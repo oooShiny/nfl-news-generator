@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NFL News Generator</title>
-    <script src="scripts.js"></script>
+    <script src="alert-generator.js"></script>
 </head>
 <body>
-    <form id="generate-form" action="">
+    <form id="alert-form" action="">
         Alert Text: <input type="text" name="alert-text" id="alert-text">
         Header Text: <input type="text" name="header-text" id="header-text">
         Bottom Text: <input type="text" name="bottom-text" id="bottom-text">
@@ -50,9 +50,10 @@
         <input type="button" value="Generate" onclick="generate()">
     </form>
     
-    <canvas id="alert-generator" height="1200" width="1200">
-    </canvas>
-    <img src="baker.jpeg" id="player-img" alt="default image" style="display: none;">
-    <p id="img-url"></p>
+    <!-- Alert Generator Canvas -->
+    <canvas id="alert-generator" height="1200" width="1200"></canvas>
+    
+    <!-- Quote Generator Canvas -->
+    <canvas id="quote-generator" height="1200" width="1200"></canvas>
 </body>
 </html>
