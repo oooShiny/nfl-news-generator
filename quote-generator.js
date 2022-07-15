@@ -14,9 +14,14 @@ function drawImage(team, quote_text, attribution_text, player_img) {
         // Add player image to left side.
         const img = new Image();
         img.addEventListener('load', function() {
+            var ratio = canvas.height/img.naturalHeight;
+            var h = canvas.height;
+            var w = img.naturalWidth * ratio;
+            var shift = 600 - (w/2);
+
             ctx.drawImage(img, 
-                0, 0, // Starting point of cropped image on canvas
-                1200, 1200 // Scaled width/height image
+                shift, 0, // Starting point of cropped image on canvas
+                w, 1200 // Scaled width/height image
                 );
             
             // Overlay gradient.

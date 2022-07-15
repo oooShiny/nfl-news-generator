@@ -8,9 +8,13 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
     // Add player image to left side.
     const img = new Image();
     img.addEventListener('load', function() {
+        var ratio = canvas.height/img.naturalHeight;
+        var h = canvas.height;
+        var w = img.naturalWidth * ratio;
+        var shift = (665/2) - (w/2);
         ctx.drawImage(img, 
-            0, 0, // Starting point of cropped image on canvas
-            665, 1200 // Scaled width/height image
+            shift, 0, // Starting point of cropped image on canvas
+            w, 1200 // Scaled width/height image
             );
 
         // Draw right hand background.
@@ -47,6 +51,22 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         bottom.forEach(function(line, i) {
             ctx.fillText(line.toUpperCase(), 700, 1015+(i*80),);
         });
+
+        // Add team logo to the top right.
+        ctx.shadowColor = 'rgb(0, 0, 0, .5)';
+        ctx.shadowOffsetX = -25;
+        ctx.shadowOffsetY = 25;
+        ctx.shadowBlur = 10;
+        const logo = new Image();   // Create new img element
+        logo.addEventListener('load', function() {
+            if (team == 'nfl') {
+                ctx.drawImage(logo, 600, -150, canvas.width/2.5, canvas.height/2);
+            }
+            else {
+                ctx.drawImage(logo, 550, -100, canvas.width/2, canvas.height/2);
+            }
+        }, false);
+        logo.src = 'logos/' + team + '.webp';
     }, false);
     if (typeof player_img === 'object') {
         img.src = URL.createObjectURL(player_img);
@@ -56,17 +76,7 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
     }
     
 
-    // Add team logo to the top right.
-    const logo = new Image();   // Create new img element
-    logo.addEventListener('load', function() {
-        if (team == 'nfl') {
-            ctx.drawImage(logo, 600, -150, canvas.width/2.5, canvas.height/2);
-        }
-        else {
-            ctx.drawImage(logo, 550, -100, canvas.width/2, canvas.height/2);
-        }
-    }, false);
-    logo.src = 'logos/' + team + '.webp';
+    
 
 
     // const url = document.getElementById('img-url');
