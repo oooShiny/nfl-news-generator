@@ -1,7 +1,7 @@
-function drawImage(team, alert_text, header_text, bottom_text, player_img) {
+function drawImage(team, quote_text, attribution_text, player_img) {
     // Get team data.
     var t = teamData(team);
-    const canvas = document.getElementById('alert-generator');
+    const canvas = document.getElementById('quote-generator');
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -10,43 +10,36 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
     img.addEventListener('load', function() {
         ctx.drawImage(img, 
             0, 0, // Starting point of cropped image on canvas
-            665, 1200 // Scaled width/height image
+            1200, 1200 // Scaled width/height image
             );
-
-        // Draw right hand background.
-        ctx.fillStyle = t.bg_color;
-        ctx.fillRect(665, 0, 535, 1200);
         
-        // Draw alert box (white)
-        ctx.shadowColor = 'rgb(0, 0, 0, .5)';
-        ctx.shadowOffsetX = -25;
-        ctx.shadowOffsetY = 25;
-        ctx.shadowBlur = 10;
-        ctx.fillStyle = 'rgb(255, 255, 255)';
-        ctx.fillRect(634, 495, 566, 170);
+        // Overlay gradient.
+        var gradient = ctx.createLinearGradient(0, 0, 0, 1200);
+        gradient.addColorStop(0.25, 'rgb(255, 255, 255, 0)');
+        gradient.addColorStop(.75, t.bg_color);
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 1200, 1200);
+        
+        // Draw quote box (white)
+        ctx.fillStyle = 'rgb(220, 220, 220)';
+        ctx.fillRect(50, 791, 1100, 355);
 
-        // Add alert text.
-        ctx.shadowColor='rgba(0,0,0,0)';
+        // Add quote text.
         ctx.fillStyle = 'rgb(0, 0, 0)';
-        ctx.font = 'bold 100px Verdana';
-        ctx.fillText(alert_text.toUpperCase(), 700, 615, 480);
-
-        // Add header text.
-        var header = getLines(ctx, header_text, 480);
-        ctx.fillStyle = t.header_color;
-        ctx.font = '70px Verdana';
-        header.forEach(function(line, i) {
-            ctx.fillText(line.toUpperCase(), 700, 815+(i*80),);
+        ctx.textAlign = 'center';
+        quote_text = '"' + quote_text + '"';
+        ctx.font = '40px Verdana';
+        var quote = getLines(ctx, quote_text, 800);
+        
+        quote.forEach(function(line, i) {
+            ctx.fillText(line.toUpperCase(), 600, 875+(i*40),);
         });
         
+        // Add attribution text.
+        ctx.textAlign = 'right';
+        ctx.font = '25px Verdana';
+        ctx.fillText(attribution_text.toUpperCase(), 1100, 1125);
 
-        // Add bottom text.
-        var bottom = getLines(ctx, bottom_text, 480);
-        ctx.fillStyle = t.text_color;
-        ctx.font = 'lighter 50px Verdana';
-        bottom.forEach(function(line, i) {
-            ctx.fillText(line.toUpperCase(), 700, 1015+(i*80),);
-        });
     }, false);
     if (typeof player_img === 'object') {
         img.src = URL.createObjectURL(player_img);
@@ -54,44 +47,26 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
     else {
         img.src = player_img;
     }
-    
-
-    // Add team logo to the top right.
-    const logo = new Image();   // Create new img element
-    logo.addEventListener('load', function() {
-        if (team == 'nfl') {
-            ctx.drawImage(logo, 600, -150, canvas.width/2.5, canvas.height/2);
-        }
-        else {
-            ctx.drawImage(logo, 550, -100, canvas.width/2, canvas.height/2);
-        }
-    }, false);
-    logo.src = 'logos/' + team + '.webp';
-
-
-    // const url = document.getElementById('img-url');
-    // url.innerText = canvas.toDataURL();
-
 }
 
 window.onload = function() {
-    var player_img = new Image();
-    player_img.addEventListener('load', function() {}, false);
-    player_img.src = 'baker.jpeg';
-    drawImage('nfl','ALERT', 'header text', 'bottom text', 'baker.jpeg');
-    
+    drawImage(
+        'nfl', 
+        'Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. In auctor lobortis lacus. Pellentesque dapibus hendrerit tortor. Nam eget dui. Praesent ac sem eget est egestas volutpat.', 
+        'attribution text', 
+        'test-quote.jpeg'
+    );
 }
 
-function generate_alert() {
-    var formData = new FormData(document.querySelector('form#alert-form'));
+function generate_quote() {
+    var formData = new FormData(document.querySelector('form#quote-form'));
     
     var team = formData.get('team');
-    var alert_text = formData.get('alert-text');
-    var header_text = formData.get('header-text');
-    var bottom_text = formData.get('bottom-text');
+    var quote_text = formData.get('quote-text');
+    var attribution_text = formData.get('attr-text');
     var player_img = formData.get('player-image');
 
-    drawImage(team, alert_text, header_text, bottom_text, player_img);
+    drawImage(team, quote_text, attribution_text, player_img);
 }
 
 function getLines(ctx, text, maxWidth) {
