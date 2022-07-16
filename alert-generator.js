@@ -10,7 +10,6 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
     img.crossOrigin = "Anonymous";
     img.addEventListener('load', function() {
         var ratio = canvas.height/img.naturalHeight;
-        var h = canvas.height;
         var w = img.naturalWidth * ratio;
         var shift = (665/2) - (w/2);
         ctx.drawImage(img, 
@@ -68,7 +67,7 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
                 ctx.drawImage(logo, 550, -100, canvas.width/2, canvas.height/2);
             }
         }, false);
-        logo.src = 'logos/' + team + '.webp';
+        logo.src = 'logos/' + team + '.webp?' + Math.random()*1000;
     }, false);
     if (typeof player_img === 'object') {
         img.src = URL.createObjectURL(player_img);
@@ -84,7 +83,7 @@ window.onload = function() {
     var player_img = new Image();
     player_img.addEventListener('load', function() {}, false);
     player_img.src = 'baker.jpeg';
-    drawImage('nfl','ALERT', 'header text', 'bottom text', 'baker.jpeg');
+    drawImage('nfl','ALERT', 'header text', 'bottom text', 'baker.jpeg?nocache');
     
 }
 
