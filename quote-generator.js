@@ -102,7 +102,7 @@ function generate_quote() {
     drawImage(team, quote_text, attribution_text, player_img);
 
     // Build the download button.
-    var imgName = attribution_text + '_' + quote_text + '.png';
-    buildDownloadButton(imgName, 'alert-generator');
+    var imgName = attribution_text + '-quote.png';
+    buildDownloadButton(imgName, 'quote-generator');
 }
 
