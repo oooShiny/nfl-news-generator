@@ -17,6 +17,7 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
             );
 
         // Draw right hand background.
+        ctx.shadowColor='rgba(0,0,0,0)';
         ctx.fillStyle = t.bg_color;
         ctx.fillRect(665, 0, 535, 1200);
         
@@ -36,6 +37,7 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
 
         // Add header text.
         var header = getLines(ctx, header_text, 480);
+        ctx.shadowColor='rgba(0,0,0,0)';
         ctx.fillStyle = t.header_color;
         ctx.font = '70px Verdana';
         header.forEach(function(line, i) {
@@ -45,6 +47,7 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
 
         // Add bottom text.
         var bottom = getLines(ctx, bottom_text, 480);
+        ctx.shadowColor='rgba(0,0,0,0)';
         ctx.fillStyle = t.text_color;
         ctx.font = 'lighter 50px Verdana';
         bottom.forEach(function(line, i) {
@@ -52,12 +55,12 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         });
 
         // Add team logo to the top right.
-        ctx.shadowColor = 'rgb(0, 0, 0, .5)';
-        ctx.shadowOffsetX = -25;
-        ctx.shadowOffsetY = 25;
-        ctx.shadowBlur = 10;
         const logo = new Image();
         logo.addEventListener('load', function() {
+            ctx.shadowColor = 'rgb(0, 0, 0, .5)';
+            ctx.shadowOffsetX = -25;
+            ctx.shadowOffsetY = 25;
+            ctx.shadowBlur = 10;
             if (team == 'nfl') {
                 ctx.drawImage(logo, 600, -150, canvas.width/2.5, canvas.height/2);
             }
