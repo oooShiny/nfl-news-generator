@@ -80,7 +80,7 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         img.src = player_img;
     }
     const url = document.getElementById('img-url');
-    url.href = canvas.toDataURL();
+    url.href = canvas.toDataURL(('image/png', 0));
     url.setAttribute('download', alert_text + '_' + header_text + '_' + bottom_text);
 }
 
