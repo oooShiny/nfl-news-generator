@@ -73,9 +73,6 @@ function drawImage(team, quote_text, attribution_text, player_img) {
         else {
             img.src = player_img;
         }
-        const url = document.getElementById('img-url');
-        url.href = canvas.toDataURL();
-        url.setAttribute('download', attribution_text + '_' + quote_text);
     });
     
 }
