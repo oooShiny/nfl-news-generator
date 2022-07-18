@@ -79,9 +79,6 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         img.crossOrigin = 'anonymous';
         img.src = player_img;
     }
-    const url = document.getElementById('img-url');
-    url.href = canvas.toDataURL(('image/png', 0));
-    url.setAttribute('download', alert_text + '_' + header_text + '_' + bottom_text);
 }
 
 // Draw the initial alert with some defaults so it's not a blank page.
@@ -89,7 +86,7 @@ window.onload = function() {
     var player_img = new Image();
     player_img.addEventListener('load', function() {}, false);
     player_img.src = 'baker.jpeg';
-    drawImage('nfl','ALERT', 'header text', 'bottom text', 'baker.jpeg?nocache');
+    drawImage('nfl','ALERT', 'header text', 'bottom text', 'baker.jpeg');
     
 }
 
@@ -104,4 +101,8 @@ function generate_alert() {
 
     // Draw the image with the form data.
     drawImage(team, alert_text, header_text, bottom_text, player_img);
+
+    // Build the download button.
+    var imgName = alert_text + '_' + header_text + '_' + bottom_text + '.png';
+    buildDownloadButton(imgName, 'alert-generator');
 }

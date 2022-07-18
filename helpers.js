@@ -1,3 +1,22 @@
+// Build the download link
+function buildDownloadButton(imgName, canvas_name) {
+    document.getElementById('img-url').addEventListener("click", function(e) {
+        var canvas = document.querySelector('#' + canvas_name);
+        var dataURL = canvas.toDataURL("image/png", 1.0);
+        downloadImage(dataURL, imgName);
+    });
+}
+
+    
+// Save | Download image
+function downloadImage(data, filename) {
+    var a = document.createElement('a');
+    a.href = data;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+}
+
 function getLines(ctx, text, maxWidth) {
     var words = text.split(" ");
     var lines = [];
