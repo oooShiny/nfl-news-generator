@@ -36,6 +36,53 @@ function getLines(ctx, text, maxWidth) {
     return lines;
 }
 
+function sizeImage(canvas, img, size_w, size_h, top, left) {
+    let h = 0;
+    let w = 0;
+    // Image is taller than opening...
+    if (img.naturalHeight > size_h) {
+        // ...and image is wider than opening.
+        if (img.naturalWidth > size_w) {
+            const h_ratio = size_h/img.naturalHeight;
+            w = img.naturalWidth * h_ratio;
+            h = size_h;
+        }
+        // ...and image is thinner than opening.
+        else {
+            const w_ratio = size_w/img.naturalWidth;
+            h = img.naturalHeight * w_ratio;
+            w = size_w;
+        }
+    }
+    // Image is shorter than opening...
+    else {
+        // ...and image is thinner than opening.
+        if (img.naturalWidth < size_w) {
+            const h_ratio = size_h/img.naturalHeight;
+            w = img.naturalWidth * h_ratio;
+            h = size_h;
+        }
+        // ...and image is wider than opening.
+        else {
+            const w_ratio = size_w/img.naturalWidth;
+            h = img.naturalHeight * w_ratio;
+            w = size_w;
+        }
+    }
+console.log(h, w);
+
+    const shift_h = left;
+    const shift_w = top;
+
+
+    return {
+        height: h,
+        width: w,
+        top: shift_h,
+        left: shift_w
+    };
+}
+
 function teamData(team){
     var teams = {
         'nfl': {

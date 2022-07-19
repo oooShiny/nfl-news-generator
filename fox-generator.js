@@ -10,15 +10,17 @@ function drawImage(chevron_text, box_text, box_img) {
         ctx.drawImage(img, 0, 0, 1280, 720);
         
         // Draw top right box (white)
-        ctx.fillStyle = 'rgb(255, 255, 255)';
-        ctx.fillRect(695, 77, 533, 303);
+        // ctx.fillStyle = 'rgb(255, 255, 255)';
+        // ctx.fillRect(695, 77, 533, 303);
 
 
 
         // Add box image
         const box_image = new Image();
         box_image.addEventListener('load', function() {
-            ctx.drawImage(box_image, 695, 77, 533, 303);
+            const bi = sizeImage(canvas, box_image, 533, 303, 695, 77);
+            console.log(bi);
+            ctx.drawImage(box_image, bi.top, bi.left, bi.width, bi.height);
 
             // Add box text.
             ctx.font = '70px Verdana';
