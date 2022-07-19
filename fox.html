@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fox News Generator</title>
+    <script src="fox-generator.js"></script>
+    <script src="helpers.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="alert.html">Alert</a></li>
+            <li><a href="quote.html">Quote</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <form id="fox-form">
+            Chevron Text: <input type="text" name="chevron-text" id="chevron-text">
+            Box Text: <input type="text" name="box-text" id="box-text">
+            <input type="file" name="box-image" id="box-image">
+            <input type="button" value="Generate" onclick="generate_foxnews()">
+        </form>
+        
+        <!-- Alert Generator Canvas -->
+        <canvas id="fox-generator" height="720" width="1280"></canvas>
+        <p><button id="img-url">Download</button></p>
+    </div>
+</body>
+</html>

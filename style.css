@@ -7,3 +7,18 @@
     font-weight: normal;
     font-style: normal;
 }
+
+
+.header {
+    background: #e9e6e6;
+}
+
+.header li {
+    display: inline-block;
+    padding: 1em;
+}
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+}

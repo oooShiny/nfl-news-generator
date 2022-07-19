@@ -11,49 +11,58 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form id="quote-form">
-        Quote: <textarea name="quote-text" id="quote-text" cols="30" rows="10"></textarea>
-        Attribution: <input type="text" name="attr-text" id="attr-text">
-        <select name="team" id="team">
-            <option value="nfl">NFL</option>
-            <option value="arizona-cardinals">Arizona Cardinals</option>
-            <option value="atlanta-falcons">Atlanta Falcons</option>
-            <option value="baltimore-ravens">Baltimore Ravens</option>
-            <option value="buffalo-bills">Buffalo Bills</option>
-            <option value="carolina-panthers">Carolina Panthers</option>
-            <option value="chicago-bears">Chicago Bears</option>
-            <option value="cincinnati-bengals">Cincinnati Bengals</option>
-            <option value="cleveland-browns">Cleveland Browns</option>
-            <option value="dallas-cowboys">Dallas Cowboys</option>
-            <option value="denver-broncos">Denver Broncos</option>
-            <option value="detroit-lions">Detroit Lions</option>
-            <option value="green-bay-packers">Green Bay Packers</option>
-            <option value="houston-texans">Houston Texans</option>
-            <option value="indianapolis-colts">Indianapolis Colts</option>
-            <option value="jacksonville-jaguars">Jacksonville Jaguars</option>
-            <option value="kansas-city-chiefs">Kansas City Chiefs</option>
-            <option value="las-vegas-raiders">Las Vegas Raiders</option>
-            <option value="los-angeles-chargers">Los Angeles Chargers</option>
-            <option value="los-angeles-rams">Los Angeles Rams</option>
-            <option value="miami-dolphins">Miami Dolphins</option>
-            <option value="minnesota-vikings">Minnesota Vikings</option>
-            <option value="new-england-patriots">New England Patriots</option>
-            <option value="new-orleans-saints">New Orleans Saints</option>
-            <option value="new-york-giants">New York Giants</option>
-            <option value="new-york-jets">New York Jets</option>
-            <option value="philadelphia-eagles">Philadelphia Eagles</option>
-            <option value="pittsburgh-steelers">Pittsburgh Steelers</option>
-            <option value="san-francisco-49ers">San Francisco 49ers</option>
-            <option value="seattle-seahawks">Seattle Seahawks</option>
-            <option value="tampa-bay-buccaneers">Tampa Bay Buccaneers</option>
-            <option value="tennessee-titans">Tennessee Titans</option>
-            <option value="washington-commanders">Washington Commanders</option>
-        </select>
-        <input type="file" name="player-image" id="player-image">
-        <input type="button" value="Generate" onclick="generate_quote()">
-    </form>
-    <!-- Quote Generator Canvas -->
-    <canvas id="quote-generator" height="1200" width="1200"></canvas>  
-    <p><button id="img-url">Download</button></p>
+    <div class="header">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="alert.html">Alert</a></li>
+            <li><a href="quote.html">Quote</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <form id="quote-form">
+            Quote: <textarea name="quote-text" id="quote-text" cols="30" rows="10"></textarea>
+            Attribution: <input type="text" name="attr-text" id="attr-text">
+            <select name="team" id="team">
+                <option value="nfl">NFL</option>
+                <option value="arizona-cardinals">Arizona Cardinals</option>
+                <option value="atlanta-falcons">Atlanta Falcons</option>
+                <option value="baltimore-ravens">Baltimore Ravens</option>
+                <option value="buffalo-bills">Buffalo Bills</option>
+                <option value="carolina-panthers">Carolina Panthers</option>
+                <option value="chicago-bears">Chicago Bears</option>
+                <option value="cincinnati-bengals">Cincinnati Bengals</option>
+                <option value="cleveland-browns">Cleveland Browns</option>
+                <option value="dallas-cowboys">Dallas Cowboys</option>
+                <option value="denver-broncos">Denver Broncos</option>
+                <option value="detroit-lions">Detroit Lions</option>
+                <option value="green-bay-packers">Green Bay Packers</option>
+                <option value="houston-texans">Houston Texans</option>
+                <option value="indianapolis-colts">Indianapolis Colts</option>
+                <option value="jacksonville-jaguars">Jacksonville Jaguars</option>
+                <option value="kansas-city-chiefs">Kansas City Chiefs</option>
+                <option value="las-vegas-raiders">Las Vegas Raiders</option>
+                <option value="los-angeles-chargers">Los Angeles Chargers</option>
+                <option value="los-angeles-rams">Los Angeles Rams</option>
+                <option value="miami-dolphins">Miami Dolphins</option>
+                <option value="minnesota-vikings">Minnesota Vikings</option>
+                <option value="new-england-patriots">New England Patriots</option>
+                <option value="new-orleans-saints">New Orleans Saints</option>
+                <option value="new-york-giants">New York Giants</option>
+                <option value="new-york-jets">New York Jets</option>
+                <option value="philadelphia-eagles">Philadelphia Eagles</option>
+                <option value="pittsburgh-steelers">Pittsburgh Steelers</option>
+                <option value="san-francisco-49ers">San Francisco 49ers</option>
+                <option value="seattle-seahawks">Seattle Seahawks</option>
+                <option value="tampa-bay-buccaneers">Tampa Bay Buccaneers</option>
+                <option value="tennessee-titans">Tennessee Titans</option>
+                <option value="washington-commanders">Washington Commanders</option>
+            </select>
+            <input type="file" name="player-image" id="player-image">
+            <input type="button" value="Generate" onclick="generate_quote()">
+        </form>
+        <!-- Quote Generator Canvas -->
+        <canvas id="quote-generator" height="1200" width="1200"></canvas>  
+        <p><button id="img-url">Download</button></p>
+    </div>
 </body>
 </html>
