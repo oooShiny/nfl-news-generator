@@ -71,13 +71,15 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         logo.crossOrigin = 'anonymous';
         logo.src = 'logos/' + team + '.webp?' + Math.random()*1000;
     }, false);
-    if (typeof player_img === 'object') {
-        img.crossOrigin = 'anonymous';
-        img.src = URL.createObjectURL(player_img);
+    img.crossOrigin = 'anonymous';
+    if (typeof player_img === 'string') {
+        img.src = player_img;
+    }
+    else if (player_img.size === 0) {
+        img.src = 'football.webp';
     }
     else {
-        img.crossOrigin = 'anonymous';
-        img.src = player_img;
+        img.src = URL.createObjectURL(player_img);
     }
 }
 

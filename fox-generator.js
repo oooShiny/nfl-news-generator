@@ -34,7 +34,7 @@ function drawImage(chevron_text, box_text, box_img) {
         }, false);
         box_image.crossOrigin = "Anonymous";
         box_image.src = URL.createObjectURL(box_img);
-        
+
         // Add box text.
         ctx.font = '70px Verdana';
         ctx.strokeStyle = 'black';

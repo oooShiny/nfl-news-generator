@@ -67,11 +67,14 @@ function drawImage(team, quote_text, attribution_text, player_img) {
             logo.src = 'logos/' + team + '.webp';
 
         }, false);
-        if (typeof player_img === 'object') {
-            img.src = URL.createObjectURL(player_img);
+        if (typeof player_img === 'string') {
+            img.src = player_img;
+        }
+        else if (player_img.size === 0) {
+            img.src = 'football.webp';
         }
         else {
-            img.src = player_img;
+            img.src = URL.createObjectURL(player_img);
         }
     });
     
