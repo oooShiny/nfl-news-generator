@@ -3,24 +3,22 @@ function drawImage(chevron_text, box_text, box_img) {
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Add player image to left side.
+    // Add background image.
     const img = new Image();
     img.addEventListener('load', function() {
         // Draw the background image.
         ctx.drawImage(img, 0, 0, 1280, 720);
-        
-        // Draw top right box (white)
-        // ctx.fillStyle = 'rgb(255, 255, 255)';
-        // ctx.fillRect(695, 77, 533, 303);
-
-
 
         // Add box image
         const box_image = new Image();
         box_image.addEventListener('load', function() {
-            const bi = sizeImage(canvas, box_image, 533, 303, 695, 77);
-            console.log(bi);
-            ctx.drawImage(box_image, bi.top, bi.left, bi.width, bi.height);
+            let sizedImg = sizeImage(box_image, 533, 303);
+            ctx.drawImage(box_image,
+                sizedImg.sx, sizedImg.sy,
+                sizedImg.sw, sizedImg.sh,
+                695, 77, // Top left of image on canvas.
+                533, 303 // Width & height of image on canvas.
+            );
 
             // Add box text.
             ctx.font = '70px Verdana';

@@ -36,50 +36,37 @@ function getLines(ctx, text, maxWidth) {
     return lines;
 }
 
-function sizeImage(canvas, img, size_w, size_h, top, left) {
-    let h = 0;
-    let w = 0;
-    // Image is taller than opening...
-    if (img.naturalHeight > size_h) {
-        // ...and image is wider than opening.
-        if (img.naturalWidth > size_w) {
-            const h_ratio = size_h/img.naturalHeight;
-            w = img.naturalWidth * h_ratio;
-            h = size_h;
-        }
-        // ...and image is thinner than opening.
-        else {
-            const w_ratio = size_w/img.naturalWidth;
-            h = img.naturalHeight * w_ratio;
-            w = size_w;
-        }
+function sizeImage(img, size_w, size_h) {
+    let img_ratio = img.naturalHeight/img.naturalWidth;
+    let box_ratio = size_h/size_w;
+    let sh = 0;
+    let sw = 0;
+    let sx = 0;
+    let sy = 0;
+    // Wide image.
+    if (img_ratio < 1) {
+        sh = img.naturalHeight;
+        sw = img.naturalWidth;
+        sx = (img.naturalWidth - sw)/2;
     }
-    // Image is shorter than opening...
+    // Tall image.
+    else if (img_ratio > 1) {
+        sh = img.naturalHeight * box_ratio;
+        sw = img.naturalWidth;
+        sy = (img.naturalHeight - sh)/2;
+    }
     else {
-        // ...and image is thinner than opening.
-        if (img.naturalWidth < size_w) {
-            const h_ratio = size_h/img.naturalHeight;
-            w = img.naturalWidth * h_ratio;
-            h = size_h;
-        }
-        // ...and image is wider than opening.
-        else {
-            const w_ratio = size_w/img.naturalWidth;
-            h = img.naturalHeight * w_ratio;
-            w = size_w;
-        }
+        sh = img.naturalHeight * box_ratio;
+        sw = img.naturalWidth;
+        sy = (img.naturalHeight - sh)/2;
+        sx = (img.naturalWidth - sw)/2;
     }
-console.log(h, w);
-
-    const shift_h = left;
-    const shift_w = top;
-
 
     return {
-        height: h,
-        width: w,
-        top: shift_h,
-        left: shift_w
+        sh: sh,
+        sw: sw,
+        sx: sx,
+        sy: sy
     };
 }
 
