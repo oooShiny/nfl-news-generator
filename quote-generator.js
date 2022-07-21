@@ -43,9 +43,10 @@ function drawImage(team, quote_text, attribution_text, player_img) {
             quote_text = '"' + quote_text + '"';
             ctx.font = '60px SF-Movie-Poster-Bold';
             var quote = getLines(ctx, quote_text, 1000);
-            
+            let quoteStart = Math.min(5 - quote.length, 1);
+            console.log(quoteStart);
             quote.forEach(function(line, i) {
-                ctx.fillText(line.toUpperCase(), 600, 875+(i*55),);
+                ctx.fillText(line.toUpperCase(), 600, 875+((i+quoteStart)*55),);
             });
             
             // Add attribution text.
