@@ -51,7 +51,7 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         ctx.fillStyle = t.text_color;
         ctx.font = 'lighter 50px Verdana';
         bottom.forEach(function(line, i) {
-            ctx.fillText(line.toUpperCase(), 700, 1015+(i*80),);
+            ctx.fillText(line.toUpperCase(), 700, 1015+(i*60),);
         });
 
         // Add team logo to the top right.
