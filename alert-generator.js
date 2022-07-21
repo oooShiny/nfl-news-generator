@@ -46,12 +46,13 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         
 
         // Add bottom text.
-        var bottom = getLines(ctx, bottom_text, 480);
+        let bottom_start = 815 + (header.length * 80);
+        let bottom = getLines(ctx, bottom_text, 480);
         ctx.shadowColor='rgba(0,0,0,0)';
         ctx.fillStyle = t.text_color;
         ctx.font = 'lighter 50px Verdana';
         bottom.forEach(function(line, i) {
-            ctx.fillText(line.toUpperCase(), 700, 1015+(i*60),);
+            ctx.fillText(line.toUpperCase(), 700, bottom_start+(i*60),);
         });
 
         // Add team logo to the top right.
