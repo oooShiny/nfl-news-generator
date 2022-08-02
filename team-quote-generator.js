@@ -55,7 +55,7 @@ window.onload = function() {
     drawImage(
         'nfl', 
         'Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. In auctor lobortis lacus. Pellentesque dapibus hendrerit tortor. Nam eget dui. Praesent ac sem eget est egestas volutpat.', 
-        'attribution text', 
+        'statement from the nfl commissioner',
     );
 }
 
