@@ -6,15 +6,12 @@ function drawImage(team, quote_text, attribution_text) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
 
-    // Overlay gradient.
+    // Background color.
     ctx.fillStyle = t.bg_color;
     ctx.fillRect(0, 0, 1200, 1200);
 
-
-
     // Add quote text.
     ctx.fillStyle = t.text_color;
-
     ctx.textAlign = 'center';
     quote_text = '"' + quote_text + '"';
     ctx.font = 'lighter 40px Gotham, Helvetica Neue, sans-serif';

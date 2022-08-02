@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFL Team Quote Generator</title>
-    <script src="team-quote-generator.js"></script>
+    <title>NFL Simple Team Quote Generator</title>
+    <script src="simple-team-quote-generator.js"></script>
     <script src="helpers.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
     <link rel="stylesheet" href="style.css">
@@ -21,9 +21,10 @@
         </ul>
     </div>
     <div class="content">
-        <form id="team-quote-form">
+        <form id="simple-team-quote-form">
             Quote: <textarea name="quote-text" id="quote-text" cols="30" rows="10"></textarea>
             Attribution: <input type="text" name="attr-text" id="attr-text">
+            Small Text: <input type="text" name="small-text" id="small-text">
             <select name="team" id="team">
                 <option value="nfl">NFL</option>
                 <option value="arizona-cardinals">Arizona Cardinals</option>
@@ -59,10 +60,10 @@
                 <option value="tennessee-titans">Tennessee Titans</option>
                 <option value="washington-commanders">Washington Commanders</option>
             </select>
-            <input type="button" value="Generate" onclick="generate_team_quote()">
+            <input type="button" value="Generate" onclick="generate_simple_team_quote()">
         </form>
         <!-- Quote Generator Canvas -->
-        <canvas id="team-quote-generator" height="1200" width="1200"></canvas>
+        <canvas id="simple-team-quote-generator" height="1200" width="1200"></canvas>
         <p><button id="img-url">Download</button></p>
     </div>
 </body>
