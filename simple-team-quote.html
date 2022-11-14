@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NFL News Generator</title>
-    <script src="alert-generator.js"></script>
+    <title>NFL Simple Team Quote Generator</title>
+    <script src="simple-team-quote-generator.js"></script>
     <script src="helpers.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/mvp.css">
     <link rel="stylesheet" href="style.css">
@@ -21,10 +21,10 @@
         </ul>
     </div>
     <div class="content">
-        <form id="alert-form">
-            Alert Text: <input type="text" name="alert-text" id="alert-text" value="alert">
-            Header Text: <input type="text" name="header-text" id="header-text" value="header text">
-            Bottom Text: <input type="text" name="bottom-text" id="bottom-text" value="bottom text">
+        <form id="simple-team-quote-form">
+            Quote: <textarea name="quote-text" id="quote-text" cols="30" rows="10">Aenean posuere, tortor sed cursus feugiat, nunc augue blandit nunc, eu sollicitudin urna dolor sagittis lacus. In auctor lobortis lacus. Pellentesque dapibus hendrerit tortor. Nam eget dui. Praesent ac sem eget est egestas volutpat.</textarea>
+            Attribution: <input type="text" name="attr-text" id="attr-text" value="statement from the nfl commissioner">
+            Small Text: <input type="text" name="small-text" id="small-text" value="on yet another debacle">
             <select name="team" id="team">
                 <option value="nfl">NFL</option>
                 <option value="arizona-cardinals">Arizona Cardinals</option>
@@ -60,12 +60,10 @@
                 <option value="tennessee-titans">Tennessee Titans</option>
                 <option value="washington-commanders">Washington Commanders</option>
             </select>
-            <input type="file" name="player-image" id="player-image">
-            <input type="button" value="Generate" onclick="generate_alert()">
+            <input type="button" value="Generate" onclick="generate_simple_team_quote()">
         </form>
-
-        <!-- Alert Generator Canvas -->
-        <canvas id="alert-generator" height="1200" width="1200"></canvas>
+        <!-- Quote Generator Canvas -->
+        <canvas id="simple-team-quote-generator" height="1200" width="1200"></canvas>
         <p><button id="img-url">Download</button></p>
     </div>
 </body>

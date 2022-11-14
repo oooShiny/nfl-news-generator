@@ -35,6 +35,18 @@ function drawImage(chevron_text, box_text, box_img) {
         box_image.crossOrigin = "Anonymous";
         box_image.src = URL.createObjectURL(box_img);
 
+        // Add box text.
+        ctx.font = '70px Verdana';
+        ctx.strokeStyle = 'black';
+        ctx.lineWidth = 8;
+        ctx.fillStyle = 'white';
+        ctx.textAlign = 'center';
+        const box_lines = getLines(ctx, box_text, 500);
+        box_lines.forEach(function(line, i) {
+            ctx.strokeText(line.toUpperCase(), 950, 200+(i*80));
+            ctx.fillText(line.toUpperCase(), 950, 200+(i*80),);
+        });
+
         // Add chevron text.
         ctx.fillStyle = 'rgb(0, 0, 0)';
         ctx.font = '45px Arial';

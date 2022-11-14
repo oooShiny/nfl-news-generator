@@ -46,12 +46,13 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         
 
         // Add bottom text.
-        var bottom = getLines(ctx, bottom_text, 480);
+        let bottom_start = 815 + (header.length * 80);
+        let bottom = getLines(ctx, bottom_text, 480);
         ctx.shadowColor='rgba(0,0,0,0)';
         ctx.fillStyle = t.text_color;
         ctx.font = 'lighter 50px Verdana';
         bottom.forEach(function(line, i) {
-            ctx.fillText(line.toUpperCase(), 700, 1015+(i*80),);
+            ctx.fillText(line.toUpperCase(), 700, bottom_start+(i*60),);
         });
 
         // Add team logo to the top right.
@@ -71,13 +72,15 @@ function drawImage(team, alert_text, header_text, bottom_text, player_img) {
         logo.crossOrigin = 'anonymous';
         logo.src = 'logos/' + team + '.webp?' + Math.random()*1000;
     }, false);
-    if (typeof player_img === 'object') {
-        img.crossOrigin = 'anonymous';
-        img.src = URL.createObjectURL(player_img);
+    img.crossOrigin = 'anonymous';
+    if (typeof player_img === 'string') {
+        img.src = player_img;
+    }
+    else if (player_img.size === 0) {
+        img.src = 'football.webp';
     }
     else {
-        img.crossOrigin = 'anonymous';
-        img.src = player_img;
+        img.src = URL.createObjectURL(player_img);
     }
 }
 
