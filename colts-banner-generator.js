@@ -14,7 +14,7 @@ function drawImage(banner_text) {
         ctx.font = '45px Arial';
         ctx.textAlign = 'left';
         ctx.setTransform (1, 0.2, 0, 1, 0, 0);
-        ctx.fillText(banner_text.toUpperCase(), 500, 245, 1280);
+        ctx.fillText(banner_text.toUpperCase(), 500, 45, 1280);
         ctx.setTransform (1, 0, 0, 1, 0, 0);
 
 
