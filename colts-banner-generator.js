@@ -11,7 +11,6 @@ function drawImage(banner_text) {
 
         // Add banner text.
         let bottom = getLines(ctx, banner_text, 250);
-
         ctx.fillStyle = 'rgb(255, 255, 255)';
         ctx.font = '105px Arial';
         ctx.textAlign = 'left';
