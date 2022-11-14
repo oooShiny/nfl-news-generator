@@ -11,10 +11,10 @@ function drawImage(banner_text) {
 
         // Add banner text.
         ctx.fillStyle = 'rgb(255, 255, 255)';
-        ctx.font = '45px Arial';
+        ctx.font = '105px Arial';
         ctx.textAlign = 'left';
         ctx.setTransform (1, 0.2, 0, 1, 0, 0);
-        ctx.fillText(banner_text.toUpperCase(), 500, 45, 1280);
+        ctx.fillText(banner_text.toUpperCase(), 500, 45, 500);
         ctx.setTransform (1, 0, 0, 1, 0, 0);
 
 
@@ -23,7 +23,7 @@ function drawImage(banner_text) {
         img.src = 'template/colts_banner.jpeg';
 }
 
-// Draw the initial fox with some defaults so it's not a blank page.
+// Draw the initial image with some defaults so it's not a blank page.
 window.onload = function() {
     drawImage('2014 AFC Finalist', 'template/colts_banner.jpeg');
     
