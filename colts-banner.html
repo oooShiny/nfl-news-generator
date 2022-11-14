@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colts Banner Generator</title>
+    <script src="colts-banner-generator.js"></script>
+    <script src="helpers.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="alert.html">NFL Alert</a></li>
+            <li><a href="quote.html">NFL Quote</a></li>
+            <li><a href="fox.html">Fox News</a></li>
+            <li><a href="colts-banner.html">Colts Banner</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <form id="colts-banner-form">
+            Banner Text: <input type="text" name="banner-text" id="banner-text">
+            <input type="button" value="Generate" onclick="generate_colts_banner()">
+        </form>
+        
+        <!-- Alert Generator Canvas -->
+        <canvas id="colts-banner-generator" height="720" width="1280"></canvas>
+        <p><button id="img-url">Download</button></p>
+    </div>
+</body>
+</html>
