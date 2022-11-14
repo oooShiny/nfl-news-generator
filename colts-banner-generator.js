@@ -10,7 +10,7 @@ function drawImage(banner_text) {
         ctx.drawImage(img, 0, 0, 1280, 720);
 
         // Add banner text.
-        let bottom = getLines(ctx, banner_text, 250);
+        let bottom = getLines(ctx, banner_text, 50);
         ctx.fillStyle = 'rgb(255, 255, 255)';
         ctx.font = '105px Arial';
         ctx.textAlign = 'left';
