@@ -10,13 +10,14 @@ function drawImage(banner_text) {
         ctx.drawImage(img, 0, 0, 1280, 720);
 
         // Add banner text.
-        ctx.fillStyle = 'rgb(0, 0, 0)';
+        ctx.fillStyle = 'rgb(255, 255, 255)';
         ctx.font = '45px Arial';
         ctx.textAlign = 'left';
+        ctx.setTransform (1, -0.2, 0, 1, 0, 0);
         ctx.fillText(banner_text.toUpperCase(), 205, 645, 1000);
+        ctx.setTransform (1, 0, 0, 1, 0, 0);
 
 
-        
     }, false);
         img.crossOrigin = 'anonymous';
         img.src = 'template/colts_banner.jpeg';
