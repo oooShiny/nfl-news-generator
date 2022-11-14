@@ -35,7 +35,7 @@ function generate_colts_banner() {
     const banner_text = formData.get('banner-text');
 
     // Draw the image with the form data.
-    drawImage(banner_text, box_text, box_img);
+    drawImage(banner_text);
 
     // Build the download button.
     const imgName = 'colts_banner_' + banner_text + '.png';
