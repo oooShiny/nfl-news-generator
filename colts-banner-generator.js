@@ -12,7 +12,7 @@ function drawImage(banner_text) {
         // Add banner text.
         let bottom = getLines(ctx, banner_text, 10);
         ctx.fillStyle = 'rgb(255, 255, 255)';
-        ctx.font = 'bold 105px Arial';
+        ctx.font = 'bold 103px Arial';
         ctx.textAlign = 'center';
         ctx.setTransform (1, 0.2, 0.2, 1, 0, 0);
         bottom.forEach(function(line, i) {
