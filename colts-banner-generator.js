@@ -16,7 +16,7 @@ function drawImage(banner_text) {
         ctx.textAlign = 'center';
         ctx.setTransform (1, 0.2, 0.2, 1, 0, 0);
         bottom.forEach(function(line, i) {
-            ctx.fillText(line.toUpperCase(), 570, 105+(i*100),);
+            ctx.fillText(line.toUpperCase(), 580, 100+(i*100),);
         });
         ctx.setTransform (1, 0, 0, 1, 0, 0);
 
