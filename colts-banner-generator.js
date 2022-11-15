@@ -23,12 +23,12 @@ function drawImage(banner_text) {
 
     }, false);
         img.crossOrigin = 'anonymous';
-        img.src = 'template/colts_banner.jpeg';
+        img.src = 'template/colts_banner.png';
 }
 
 // Draw the initial image with some defaults so it's not a blank page.
 window.onload = function() {
-    drawImage('2014 AFC Finalist', 'template/colts_banner.jpeg');
+    drawImage('2014 AFC Finalist', 'template/colts_banner.png');
     
 }
 
