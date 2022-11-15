@@ -10,13 +10,13 @@ function drawImage(banner_text) {
         ctx.drawImage(img, 0, 0, 1280, 720);
 
         // Add banner text.
-        let bottom = getLines(ctx, banner_text, 50);
+        let bottom = getLines(ctx, banner_text, 10);
         ctx.fillStyle = 'rgb(255, 255, 255)';
         ctx.font = '105px Arial';
         ctx.textAlign = 'left';
         ctx.setTransform (1, 0.2, -0.1, 1, 0, 0);
         bottom.forEach(function(line, i) {
-            ctx.fillText(line.toUpperCase(), 500, 65+(i*60),);
+            ctx.fillText(line.toUpperCase(), 500, 65+(i*100),);
         });
         ctx.setTransform (1, 0, 0, 1, 0, 0);
 
